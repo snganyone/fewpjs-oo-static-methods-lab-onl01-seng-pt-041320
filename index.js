@@ -3,6 +3,7 @@ class Formatter {
   static capitalize(word){
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
+
   static sanitize(word){
     return word.replace(/[^-'\sA-Za-z0-9]/g, '');
   }
@@ -10,23 +11,9 @@ class Formatter {
   static titleize(sentence){
     let word = sentence.split(' ');
     let preps = ["the", "of", "but", "and", "an", "or", "in", "a", "for", "at", "by", "from"];
-    let newarr = []
-    word = word.map(function(str){
-      if(preps.includes(str)){
-        newarr.push(str);
-      } else if(str[0] === word[0]){
-        let x = str[0].toUpperCase();
-        console.log(x);
-        newarr.push(x);
-      } else {
-        let result = str.charAt(0).toUpperCase() + str.slice(1);
-        newarr.push(result);
-      }
-      
-    });
-    return newarr.join(' ');
+
+    word = word.map((e,i) => preps.indexOf(e) == -1 || i === 0 ? e[0].toUpperCase()+e.slice(1) : e).join(" ");
+    return word;
   }
 
 }
-
-//Formatter.titleize("A tale of Two Cities");
