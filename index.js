@@ -5,7 +5,7 @@ class Formatter {
   }
   static sanitize(word){
     //return word.replace(/[^A-Za-z0-9-']+/g, '');
-    return word.replace(/\W+/g, '');
+    return word.replace(/!\s\w+\s+\w+''/g, '');
   }
 
   static titleize(sentence){
@@ -17,6 +17,7 @@ class Formatter {
         newarr.push(str);
       } else if(str[0] === word[0]){
         let x = str[0].toUpperCase();
+        console.log(x);
         newarr.push(x);
       } else {
         let result = str.charAt(0).toUpperCase() + str.slice(1);
