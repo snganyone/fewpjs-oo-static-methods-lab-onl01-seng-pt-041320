@@ -4,8 +4,7 @@ class Formatter {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
   static sanitize(word){
-    return word.replace(/[^A-Za-z0-9-']+/g, '');
-    //return word.replace(/!\s\w+\s+\w+''/g, '');
+    return word.replace(/[^-'\sA-Za-z0-9]/g, '');
   }
 
   static titleize(sentence){
